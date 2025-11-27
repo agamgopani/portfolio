@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Hero from './components/Hero';
+import BentoGrid from './components/BentoGrid';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
+import SecretSauce from './components/SecretSauce';
 import Contact from './components/Contact';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <div className="logo">AG.</div>
           <div className="nav-links">
             <a href="#home">Home</a>
+            <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Work</a>
             <a href="#skills">Skills</a>
@@ -45,9 +47,10 @@ function App() {
 
       <main>
         <Hero />
+        <BentoGrid />
         <Experience />
         <Projects />
-        <Skills />
+        <SecretSauce />
         <Contact />
       </main>
 
