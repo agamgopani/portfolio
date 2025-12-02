@@ -3,45 +3,45 @@ import { resumeData } from '../data/resume';
 import { ArrowRight, Download } from 'lucide-react';
 
 const Hero = () => {
-    const { name, role, summary } = resumeData.personal;
+  const { name, role, summary } = resumeData.personal;
 
-    return (
-        <section id="home" className="hero-section">
-            <div className="container hero-container">
-                <div className="hero-content">
-                    <div className="status-badge animate-in">
-                        <span className="status-dot"></span>
-                        Available for work
-                    </div>
+  return (
+    <section id="home" className="hero-section">
+      <div className="container hero-container">
+        <div className="hero-content">
+          <div className="status-badge animate-in">
+            <span className="status-dot"></span>
+            Available for work
+          </div>
 
-                    <h1 className="hero-title animate-in delay-1">
-                        {name}
-                    </h1>
+          <h1 className="hero-title animate-in delay-1">
+            {name}
+          </h1>
 
-                    <h2 className="hero-subtitle animate-in delay-2">
-                        {role}
-                    </h2>
+          <h2 className="hero-subtitle animate-in delay-2">
+            {role}
+          </h2>
 
-                    <p className="hero-description animate-in delay-3">
-                        {summary[0]}
-                    </p>
+          <p className="hero-description animate-in delay-3">
+            {summary[0]}
+          </p>
 
-                    <div className="hero-actions animate-in delay-3">
-                        <a href="#contact" className="btn btn-primary">
-                            Get in Touch <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
-                        </a>
-                        <a href="#projects" className="btn btn-secondary">
-                            View Work
-                        </a>
-                    </div>
-                </div>
+          <div className="hero-actions animate-in delay-3">
+            <a href="#contact" className="btn btn-primary">
+              Get in Touch <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
+            </a>
+            <a href="#projects" className="btn btn-secondary">
+              View Work
+            </a>
+          </div>
+        </div>
 
-                <div className="hero-visual animate-in delay-2">
-                    <div className="gradient-orb"></div>
-                </div>
-            </div>
+        <div className="hero-visual animate-in delay-2">
+          <div className="gradient-orb"></div>
+        </div>
+      </div>
 
-            <style>{`
+      <style>{`
         .hero-section {
           min-height: 100vh;
           display: flex;
@@ -49,6 +49,18 @@ const Hero = () => {
           position: relative;
           overflow: hidden;
           padding-top: 80px; /* Navbar height */
+          background-image: url('/hero-bg.png');
+          background-size: cover;
+          background-position: center bottom;
+          background-repeat: no-repeat;
+        }
+
+        .hero-section::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+          z-index: 1;
         }
 
         .hero-container {
@@ -56,6 +68,8 @@ const Hero = () => {
           align-items: center;
           justify-content: space-between;
           width: 100%;
+          position: relative;
+          z-index: 2;
         }
 
         .hero-content {
@@ -165,8 +179,8 @@ const Hero = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Hero;
