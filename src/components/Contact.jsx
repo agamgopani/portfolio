@@ -10,8 +10,7 @@ const Contact = () => {
       <div className="container contact-container">
         <h2 className="contact-title">Let's work together</h2>
         <p className="contact-text">
-          I'm currently available for new opportunities.
-          Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          I’m always looking to collaborate on interesting projects with great people. Need a hand? I have two!
         </p>
 
         <a href={`mailto:${email}`} className="btn btn-primary email-btn">
