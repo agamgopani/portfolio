@@ -19,17 +19,17 @@ const BentoGrid = () => {
           {/* Time Zones Block (Left Tall) */}
           <div className="bento-item timezone-block">
             <div className="bento-content">
-              <h3 className="bento-title">I'm very flexible with time zone communications</h3>
+              <h3 className="bento-title">I'm very flexible with time zone <span className="highlight-blue">communications</span></h3>
 
               <div className="timezone-flags">
                 <div className="flag-item"><span className="flag">🇬🇧</span> UK</div>
                 <div className="flag-item"><span className="flag">🇮🇳</span> India</div>
                 <div className="flag-item"><span className="flag">🇺🇸</span> USA</div>
+                <div className="flag-item"><span className="flag">🇨🇦</span> Canada</div>
               </div>
 
               <div className="globe-visual">
                 <div className="globe-sphere"></div>
-                <div className="globe-grid"></div>
               </div>
 
               <div className="timezone-footer">
@@ -161,6 +161,10 @@ const BentoGrid = () => {
           color: #ededed;
         }
 
+        .highlight-blue {
+          color: var(--accent-color);
+        }
+
         .glow-text {
           text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
@@ -195,18 +199,12 @@ const BentoGrid = () => {
           flex-grow: 1;
           position: relative;
           margin: 1rem 0;
-          background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
           border-radius: 50%;
           min-height: 200px;
-        }
-
-        .globe-grid {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-          background-size: 20px 20px;
-          mask-image: radial-gradient(circle, black 40%, transparent 80%);
-          opacity: 0.5;
+          background-image: url('/globe-map.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
 
         .timezone-footer {
