@@ -8,6 +8,7 @@ export const resumeData = {
         email: "gopaniaagam@gmail.com",
         phone: "+1 548 333 9741",
         linkedin: "https://www.linkedin.com/in/aagamgopani/",
+        booking: "https://cal.com/aagam-gopani",
         summary: [
             "3+ years designing & delivering high-performance web applications (C#, .NET Core, Angular, AWS, Azure); ML/CV expertise in real-time object detection systems.",
             "Proven Impact: 40% platform outage reduction, 20% API speed improvement, 35% data retrieval optimization, 82% object detection accuracy in production systems.",

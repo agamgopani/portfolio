@@ -4,7 +4,7 @@ import BentoGrid from './components/BentoGrid';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import SecretSauce from './components/SecretSauce';
-import Contact from './components/Contact';
+import BookingContact from './components/BookingContact';
 
 function App() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -51,7 +51,7 @@ function App() {
         <Experience />
         <Projects />
         <SecretSauce />
-        <Contact />
+        <BookingContact />
       </main>
 
       <style>{`
