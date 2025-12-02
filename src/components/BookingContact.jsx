@@ -572,10 +572,13 @@ const BookingContact = () => {
         /* Contact Form Styles */
         .contact-form-container {
           padding: 3rem;
-          flex-grow: 1;
+          grid-column: 1 / -1;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          max-width: 800px;
+          margin: 0 auto;
+          width: 100%;
         }
 
         .contact-form {
