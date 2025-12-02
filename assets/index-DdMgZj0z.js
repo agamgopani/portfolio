@@ -1065,7 +1065,7 @@ Error generating stack: `+a.message+`
           width: 40px;
           height: 40px;
           border: 1px solid rgba(255, 255, 255, 0.5);
-          transition: width 0.2s, height 0.2s, background-color 0.2s, left 0.1s, top 0.1s;
+          transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
 
         .navbar {
