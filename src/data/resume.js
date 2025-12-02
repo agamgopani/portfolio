@@ -24,7 +24,8 @@ export const resumeData = {
                 "Engineered real-time trash detection system (YOLOv11n) for autonomous robots operating in urban environments, achieving mAP@0.5: 82%, Precision: 0.85, Recall: 0.71, enabling scalable integration into waste management fleets.",
                 "Optimized transfer learning pipeline using TACO dataset + custom street-level annotations with custom augmentation workflows, reducing model size by 40% for embedded deployment.",
                 "Architected end-to-end ML workflow (annotation → preprocessing → training → inference), enabling deployment to IOT devices supporting 300+ urban waste collection sites."
-            ]
+            ],
+            link: "https://appliedtechnology.humber.ca/shows/ict-capstone-projects-2025/thesis-projects/kevares-autonomous-visual-inspection-automated-trash-detection.html"
         },
         {
             role: "Freelance Software Developer",

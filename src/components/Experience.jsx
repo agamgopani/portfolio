@@ -1,42 +1,50 @@
 import React from 'react';
 import { resumeData } from '../data/resume';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ArrowUpRight } from 'lucide-react';
 
 const Experience = () => {
-    return (
-        <section id="experience" className="section">
-            <div className="container">
-                <h2 className="section-title">Work Experience</h2>
+  return (
+    <section id="experience" className="section">
+      <div className="container">
+        <h2 className="section-title">Work Experience</h2>
 
-                <div className="experience-list">
-                    {resumeData.experience.map((job, index) => (
-                        <div key={index} className="experience-card">
-                            <div className="exp-header">
-                                <div className="exp-role-company">
-                                    <h3 className="exp-role">{job.role}</h3>
-                                    <h4 className="exp-company">{job.company}</h4>
-                                </div>
-                                <div className="exp-meta">
-                                    <span className="exp-date">
-                                        <Calendar size={14} /> {job.date}
-                                    </span>
-                                    <span className="exp-location">
-                                        <MapPin size={14} /> {job.location}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <ul className="exp-achievements">
-                                {job.achievements.map((achievement, i) => (
-                                    <li key={i}>{achievement}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+        <div className="experience-list">
+          {resumeData.experience.map((job, index) => (
+            <div key={index} className="experience-card">
+              <div className="exp-header">
+                <div className="exp-role-company">
+                  <h3 className="exp-role">{job.role}</h3>
+                  <h4 className="exp-company">
+                    {job.link ? (
+                      <a href={job.link} target="_blank" rel="noopener noreferrer" className="company-link">
+                        {job.company} <ArrowUpRight size={14} style={{ display: 'inline', marginLeft: '4px' }} />
+                      </a>
+                    ) : (
+                      job.company
+                    )}
+                  </h4>
                 </div>
-            </div>
+                <div className="exp-meta">
+                  <span className="exp-date">
+                    <Calendar size={14} /> {job.date}
+                  </span>
+                  <span className="exp-location">
+                    <MapPin size={14} /> {job.location}
+                  </span>
+                </div>
+              </div>
 
-            <style>{`
+              <ul className="exp-achievements">
+                {job.achievements.map((achievement, i) => (
+                  <li key={i}>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
         .experience-list {
           display: flex;
           flex-direction: column;
@@ -77,6 +85,19 @@ const Experience = () => {
           font-size: 1rem;
           color: var(--accent-color);
           font-weight: 500;
+        }
+
+        .company-link {
+          color: inherit;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          transition: color 0.2s;
+        }
+
+        .company-link:hover {
+          color: var(--text-primary);
+          text-decoration: underline;
         }
 
         .exp-meta {
@@ -127,8 +148,8 @@ const Experience = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Experience;
