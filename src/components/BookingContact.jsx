@@ -6,6 +6,29 @@ const BookingContact = () => {
   const { email, booking, linkedin } = resumeData.personal;
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('booking');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+
+    const subject = `Portfolio Contact from ${name}`;
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+    window.location.href = `mailto:${resumeData.personal.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+  };
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -89,24 +112,46 @@ const BookingContact = () => {
               </div>
             ) : (
               <div className="contact-form-container">
-                <form className="contact-form" action={`mailto:${email}`} method="post" encType="text/plain">
+                <form className="contact-form" onSubmit={handleSubmit}>
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="name">Name</label>
-                      <input type="text" id="name" placeholder="Your name" required />
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Your name"
+                        required
+                        value={formData.name}
+                        onChange={handleInputChange}
+                      />
                     </div>
                     <div className="form-group">
                       <label htmlFor="email">Email</label>
-                      <input type="email" id="email" placeholder="your.email@example.com" required />
+                      <input
+                        type="email"
+                        id="email"
+                        placeholder="your.email@example.com"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                      />
                     </div>
                   </div>
 
                   <div className="form-group">
                     <div className="label-row">
                       <label htmlFor="message">Message</label>
-                      <span className="char-count">0/1000</span>
+                      <span className="char-count">{formData.message.length}/1000</span>
                     </div>
-                    <textarea id="message" placeholder="What would you like to discuss?" rows="6" required></textarea>
+                    <textarea
+                      id="message"
+                      placeholder="What would you like to discuss?"
+                      rows="6"
+                      required
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      maxLength={1000}
+                    ></textarea>
                   </div>
 
                   <button type="submit" className="submit-btn">
