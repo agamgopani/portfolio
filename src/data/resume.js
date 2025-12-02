@@ -38,7 +38,8 @@ export const resumeData = {
                 "Architected developer onboarding system, reducing new engineer onboarding time by 50% (from 8 hours to 4 hours).",
                 "Optimized release management through advanced branching strategies and standardized coding practices, decreasing integration failures by 30% and eliminating post-release defects (zero production incidents).",
                 "Led codebase migration from legacy client environment to local development setup, resolving 47 dependency conflicts and achieving 100% build success rate."
-            ]
+            ],
+            link: "https://www.truvelop.com/"
         },
         {
             role: "Software Developer",
