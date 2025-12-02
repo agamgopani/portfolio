@@ -11,6 +11,7 @@ const BookingContact = () => {
     email: '',
     message: ''
   });
+  const [selectedDate, setSelectedDate] = useState(5);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -29,6 +30,23 @@ const BookingContact = () => {
 
     window.location.href = `mailto:${resumeData.personal.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
   };
+
+  // Calendar data
+  const currentMonth = 'December';
+  const currentYear = '2025';
+  const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const calendarDays = [
+    null, null, null, null, 1, 2, 3,
+    4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17,
+    18, 19, 20, 21, 22, 23, 24,
+    25, 26, 27, 28, 29, 30, 31
+  ];
+
+  const timeSlots = [
+    '12:30am', '1:00am', '1:30am', '2:00am', '2:30am',
+    '3:00am', '3:30am', '4:00am', '4:30am', '5:00am'
+  ];
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -73,94 +91,137 @@ const BookingContact = () => {
           </div>
         </div>
 
-        {/* Calendar Interface */}
+        {/* Calendar/Form Interface */}
         <div className="calendar-interface">
-          {/* Sidebar */}
-          <div className="cal-sidebar">
-            <div className="cal-profile">
-              <div className="cal-avatar">AG</div>
-              <div>
-                <h3 className="cal-name">Aagam Gopani</h3>
-                <h4 className="cal-meeting-title">30 Min Meeting</h4>
-              </div>
-            </div>
-
-            <div className="cal-details">
-              <div className="cal-detail-item">
-                <Video size={16} /> Google Meet
-              </div>
-              <div className="cal-detail-item">
-                <Clock size={16} /> 30m
-              </div>
-              <div className="cal-detail-item">
-                <Globe size={16} /> America/Toronto
-              </div>
-            </div>
-          </div>
-
-          {/* Content Area */}
-          <div className="content-area">
-            {activeTab === 'booking' ? (
-              <div className="cal-embed-container">
-                <iframe
-                  src="https://cal.com/aagam-gopani?theme=dark&layout=month_view"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  title="Book a call"
-                ></iframe>
-              </div>
-            ) : (
-              <div className="contact-form-container">
-                <form className="contact-form" onSubmit={handleSubmit}>
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label htmlFor="name">Name</label>
-                      <input
-                        type="text"
-                        id="name"
-                        placeholder="Your name"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Email</label>
-                      <input
-                        type="email"
-                        id="email"
-                        placeholder="your.email@example.com"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                      />
-                    </div>
+          {activeTab === 'booking' ? (
+            <>
+              {/* Sidebar */}
+              <div className="cal-sidebar">
+                <div className="cal-profile">
+                  <div className="cal-avatar">AG</div>
+                  <div>
+                    <h3 className="cal-name">Aagam Gopani</h3>
+                    <h4 className="cal-meeting-title">30 Min Meeting</h4>
                   </div>
+                </div>
 
+                <div className="cal-details">
+                  <div className="cal-detail-item">
+                    <Clock size={16} /> 30m
+                  </div>
+                  <div className="cal-detail-item">
+                    <Video size={16} /> Google Meet
+                  </div>
+                  <div className="cal-detail-item">
+                    <Globe size={16} /> America/Toronto
+                  </div>
+                </div>
+              </div>
+
+              {/* Calendar Grid */}
+              <div className="cal-main">
+                <div className="cal-header">
+                  <span className="cal-month">{currentMonth} {currentYear}</span>
+                  <div className="cal-nav">
+                    <ChevronLeft size={20} />
+                    <ChevronRight size={20} />
+                  </div>
+                </div>
+
+                <div className="cal-grid-wrapper">
+                  <div className="cal-weekdays">
+                    {weekDays.map(day => <span key={day}>{day}</span>)}
+                  </div>
+                  <div className="cal-days-grid">
+                    {calendarDays.map((day, idx) => (
+                      day ? (
+                        <button
+                          key={idx}
+                          className={`cal-day ${day === selectedDate ? 'selected' : ''}`}
+                          onClick={() => setSelectedDate(day)}
+                        >
+                          {day}
+                        </button>
+                      ) : (
+                        <span key={idx} className="cal-day empty"></span>
+                      )
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Time Slots */}
+              <div className="cal-timeslots">
+                <div className="timeslot-header">
+                  <span className="time-mode">12h</span>
+                  <span className="time-mode active">24h</span>
+                </div>
+                <div className="timeslot-list">
+                  {timeSlots.map((time, idx) => (
+                    <a
+                      key={idx}
+                      href={booking}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="timeslot-btn"
+                    >
+                      <span className="time-dot"></span>
+                      {time}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="contact-form-container">
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-row">
                   <div className="form-group">
-                    <div className="label-row">
-                      <label htmlFor="message">Message</label>
-                      <span className="char-count">{formData.message.length}/1000</span>
-                    </div>
-                    <textarea
-                      id="message"
-                      placeholder="What would you like to discuss?"
-                      rows="6"
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="Your name"
                       required
-                      value={formData.message}
+                      value={formData.name}
                       onChange={handleInputChange}
-                      maxLength={1000}
-                    ></textarea>
+                    />
                   </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="your.email@example.com"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
 
-                  <button type="submit" className="submit-btn">
-                    <Send size={18} /> Send message
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
+                <div className="form-group">
+                  <div className="label-row">
+                    <label htmlFor="message">Message</label>
+                    <span className="char-count">{formData.message.length}/1000</span>
+                  </div>
+                  <textarea
+                    id="message"
+                    placeholder="What would you like to discuss?"
+                    rows="6"
+                    required
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    maxLength={1000}
+                  ></textarea>
+                </div>
+
+                <button type="submit" className="submit-btn">
+                  <Send size={18} /> Send message
+                </button>
+              </form>
+            </div>
+          )}
         </div>
 
       </div>
@@ -288,9 +349,9 @@ const BookingContact = () => {
           border: 1px solid var(--border-color);
           border-radius: 1.5rem;
           display: grid;
-          grid-template-columns: 280px 1fr;
+          grid-template-columns: 280px 1fr 200px;
           overflow: hidden;
-          max-width: 1000px;
+          max-width: 1200px;
           margin: 0 auto;
           box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
         }
@@ -313,6 +374,11 @@ const BookingContact = () => {
           justify-content: center;
           font-weight: 700;
           margin-bottom: 1rem;
+        }
+
+        .cal-profile {
+          display: flex;
+          flex-direction: column;
         }
 
         .cal-name {
@@ -341,18 +407,143 @@ const BookingContact = () => {
           font-size: 0.9rem;
         }
 
-        .content-area {
-          flex-grow: 1;
-          background: #000;
-          min-height: 600px;
+        /* Calendar Grid */
+        .cal-main {
+          padding: 2rem;
+          border-right: 1px solid var(--border-color);
           display: flex;
           flex-direction: column;
         }
 
-        .cal-embed-container {
+        .cal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+
+        .cal-month {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        .cal-nav {
+          display: flex;
+          gap: 0.5rem;
+          color: var(--text-secondary);
+          cursor: pointer;
+        }
+
+        .cal-grid-wrapper {
           flex-grow: 1;
-          height: 100%;
-          width: 100%;
+        }
+
+        .cal-weekdays {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          text-align: center;
+          font-size: 0.7rem;
+          color: var(--text-secondary);
+          margin-bottom: 0.5rem;
+          letter-spacing: 0.05em;
+        }
+
+        .cal-days-grid {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 0.25rem;
+        }
+
+        .cal-day {
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0.5rem;
+          color: var(--text-primary);
+          font-size: 0.9rem;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .cal-day.empty {
+          cursor: default;
+        }
+
+        .cal-day:not(.empty):hover {
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .cal-day.selected {
+          background: #fff;
+          color: #000;
+          font-weight: 600;
+        }
+
+        /* Timeslots */
+        .cal-timeslots {
+          padding: 2rem 1.5rem;
+          background: #0a0a0a;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .timeslot-header {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 1.5rem;
+          justify-content: flex-end;
+        }
+
+        .time-mode {
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+          cursor: pointer;
+          padding: 0.25rem 0.5rem;
+          border-radius: 0.25rem;
+          transition: all 0.2s;
+        }
+
+        .time-mode.active {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+        }
+
+        .timeslot-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          overflow-y: auto;
+          max-height: 400px;
+        }
+
+        .timeslot-btn {
+          padding: 0.75rem;
+          border: 1px solid var(--border-color);
+          border-radius: 0.5rem;
+          text-align: center;
+          color: var(--text-primary);
+          font-size: 0.85rem;
+          text-decoration: none;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+
+        .timeslot-btn:hover {
+          border-color: var(--accent-color);
+          background: rgba(59, 130, 246, 0.05);
+        }
+
+        .time-dot {
+          width: 6px;
+          height: 6px;
+          background: var(--accent-color);
+          border-radius: 50%;
         }
 
         /* Contact Form Styles */
@@ -446,21 +637,27 @@ const BookingContact = () => {
 
         @media (max-width: 1024px) {
           .calendar-interface {
-            grid-template-columns: 1fr;
+            grid-template-columns: 280px 1fr;
           }
-          .cal-sidebar {
-            border-right: none;
-            border-bottom: 1px solid var(--border-color);
-          }
-          .content-area {
-            min-height: 500px;
+          .cal-timeslots {
+            display: none;
           }
           .contact-form-container {
             padding: 2rem;
           }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+          .calendar-interface {
+            grid-template-columns: 1fr;
+          }
+          .cal-sidebar {
+            border-right: none;
+            border-bottom: 1px solid var(--border-color);
+          }
+          .cal-main {
+            border-right: none;
+          }
           .form-row {
             grid-template-columns: 1fr;
           }
@@ -471,3 +668,4 @@ const BookingContact = () => {
 };
 
 export default BookingContact;
+```
