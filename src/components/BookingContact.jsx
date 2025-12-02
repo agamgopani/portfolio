@@ -12,6 +12,7 @@ const BookingContact = () => {
     message: ''
   });
   const [selectedDate, setSelectedDate] = useState(5);
+  const [timeFormat, setTimeFormat] = useState('24h');
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -43,10 +44,22 @@ const BookingContact = () => {
     25, 26, 27, 28, 29, 30, 31
   ];
 
-  const timeSlots = [
-    '12:30am', '1:00am', '1:30am', '2:00am', '2:30am',
-    '3:00am', '3:30am', '4:00am', '4:30am', '5:00am'
+  // Realistic time slots (business hours)
+  const timeSlots24h = [
+    '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30',
+    '04:00', '04:30', '05:00', '09:00', '09:30', '10:00', '10:30',
+    '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00',
+    '14:30', '15:00', '15:30', '16:00', '16:30', '17:00'
   ];
+
+  const timeSlots12h = [
+    '12:30am', '1:00am', '1:30am', '2:00am', '2:30am', '3:00am', '3:30am',
+    '4:00am', '4:30am', '5:00am', '9:00am', '9:30am', '10:00am', '10:30am',
+    '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm',
+    '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm'
+  ];
+
+  const timeSlots = timeFormat === '24h' ? timeSlots24h : timeSlots12h;
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -153,8 +166,18 @@ const BookingContact = () => {
               {/* Time Slots */}
               <div className="cal-timeslots">
                 <div className="timeslot-header">
-                  <span className="time-mode">12h</span>
-                  <span className="time-mode active">24h</span>
+                  <span
+                    className={`time-mode ${timeFormat === '12h' ? 'active' : ''}`}
+                    onClick={() => setTimeFormat('12h')}
+                  >
+                    12h
+                  </span>
+                  <span
+                    className={`time-mode ${timeFormat === '24h' ? 'active' : ''}`}
+                    onClick={() => setTimeFormat('24h')}
+                  >
+                    24h
+                  </span>
                 </div>
                 <div className="timeslot-list">
                   {timeSlots.map((time, idx) => (
