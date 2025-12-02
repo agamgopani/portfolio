@@ -129,7 +129,7 @@ Error generating stack: `+a.message+`
             margin-top: 2rem;
           }
         }
-      `})]})},lr=()=>{const[s,T]=ft.useState(!1),j=()=>{navigator.clipboard.writeText(Ve.personal.email),T(!0),setTimeout(()=>T(!1),2e3)};return o.jsxs("section",{id:"about",className:"section bento-section",children:[o.jsx("div",{className:"container",children:o.jsxs("div",{className:"bento-grid",children:[o.jsx("div",{className:"bento-item timezone-block",children:o.jsxs("div",{className:"bento-content",children:[o.jsx("h3",{className:"bento-title",children:"I'm very flexible with time zone communications"}),o.jsxs("div",{className:"timezone-flags",children:[o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇬🇧"})," UK"]}),o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇮🇳"})," India"]}),o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇺🇸"})," USA"]})]}),o.jsxs("div",{className:"globe-visual",children:[o.jsx("div",{className:"globe-sphere"}),o.jsx("div",{className:"globe-grid"})]}),o.jsxs("div",{className:"timezone-footer",children:[o.jsxs("div",{className:"location-indicator",children:[o.jsx(q3,{size:14}),o.jsxs("div",{children:[o.jsx("span",{className:"loc-label",children:"REMOTE"}),o.jsx("span",{className:"loc-value",children:"India"})]})]}),o.jsxs("a",{href:"#contact",className:"connect-link",children:["Connect now ",o.jsx(y1,{size:14})]})]})]})}),o.jsx("div",{className:"bento-item collaboration-block",children:o.jsxs("div",{className:"bento-content centered",children:[o.jsx("h3",{className:"bento-title glow-text",children:"Let's work together on your next project"}),o.jsxs("div",{className:"email-copy-btn",onClick:j,children:[o.jsx(R3,{size:16}),o.jsx("span",{children:Ve.personal.email}),s&&o.jsx("span",{className:"copied-tooltip",children:"Copied!"})]})]})}),o.jsx("div",{className:"bento-item saas-block",children:o.jsxs("div",{className:"bento-content",children:[o.jsx("div",{className:"saas-icon",children:o.jsx(Qs,{size:24})}),o.jsx("span",{className:"saas-subtitle",children:"THE INSIDE SCOOP"}),o.jsx("h3",{className:"bento-title",children:"Currently building a Saas Application"}),o.jsxs("div",{className:"saas-visual",children:[o.jsx("div",{className:"saas-card-preview"}),o.jsx("div",{className:"saas-card-preview"})]})]})}),o.jsx("div",{className:"bento-item impact-block",children:o.jsxs("div",{className:"bento-content",children:[o.jsxs("div",{className:"tech-pills",children:[o.jsxs("span",{className:"pill",children:[o.jsx(ks,{size:12})," Bash"]}),o.jsxs("span",{className:"pill",children:[o.jsx(Rs,{size:12})," React"]}),o.jsxs("span",{className:"pill",children:[o.jsx(B3,{size:12})," Biome.js"]})]}),o.jsx("div",{className:"impact-visual",children:o.jsxs("div",{className:"code-window",children:[o.jsxs("div",{className:"window-header",children:[o.jsx("span",{className:"dot red"}),o.jsx("span",{className:"dot yellow"}),o.jsx("span",{className:"dot green"})]}),o.jsxs("div",{className:"window-body",children:[o.jsx("div",{className:"code-line",children:"Websites that"}),o.jsx("div",{className:"code-line highlight",children:"Impact."}),o.jsxs("div",{className:"window-actions",children:[o.jsxs("button",{className:"win-btn primary",children:["Start ",o.jsx(y1,{size:12})]}),o.jsx("button",{className:"win-btn secondary",children:"Details"})]})]})]})})]})})]})}),o.jsx("style",{children:`
+      `})]})},lr=()=>{const[s,T]=ft.useState(!1),j=()=>{navigator.clipboard.writeText(Ve.personal.email),T(!0),setTimeout(()=>T(!1),2e3)};return o.jsxs("section",{id:"about",className:"section bento-section",children:[o.jsx("div",{className:"container",children:o.jsxs("div",{className:"bento-grid",children:[o.jsx("div",{className:"bento-item timezone-block",children:o.jsxs("div",{className:"bento-content",children:[o.jsxs("h3",{className:"bento-title",children:["I'm very flexible with time zone ",o.jsx("span",{className:"highlight-blue",children:"communications"})]}),o.jsxs("div",{className:"timezone-flags",children:[o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇬🇧"})," UK"]}),o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇮🇳"})," India"]}),o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇺🇸"})," USA"]}),o.jsxs("div",{className:"flag-item",children:[o.jsx("span",{className:"flag",children:"🇨🇦"})," Canada"]})]}),o.jsx("div",{className:"globe-visual",children:o.jsx("div",{className:"globe-sphere"})}),o.jsxs("div",{className:"timezone-footer",children:[o.jsxs("div",{className:"location-indicator",children:[o.jsx(q3,{size:14}),o.jsxs("div",{children:[o.jsx("span",{className:"loc-label",children:"REMOTE"}),o.jsx("span",{className:"loc-value",children:"India"})]})]}),o.jsxs("a",{href:"#contact",className:"connect-link",children:["Connect now ",o.jsx(y1,{size:14})]})]})]})}),o.jsx("div",{className:"bento-item collaboration-block",children:o.jsxs("div",{className:"bento-content centered",children:[o.jsx("h3",{className:"bento-title glow-text",children:"Let's work together on your next project"}),o.jsxs("div",{className:"email-copy-btn",onClick:j,children:[o.jsx(R3,{size:16}),o.jsx("span",{children:Ve.personal.email}),s&&o.jsx("span",{className:"copied-tooltip",children:"Copied!"})]})]})}),o.jsx("div",{className:"bento-item saas-block",children:o.jsxs("div",{className:"bento-content",children:[o.jsx("div",{className:"saas-icon",children:o.jsx(Qs,{size:24})}),o.jsx("span",{className:"saas-subtitle",children:"THE INSIDE SCOOP"}),o.jsx("h3",{className:"bento-title",children:"Currently building a Saas Application"}),o.jsxs("div",{className:"saas-visual",children:[o.jsx("div",{className:"saas-card-preview"}),o.jsx("div",{className:"saas-card-preview"})]})]})}),o.jsx("div",{className:"bento-item impact-block",children:o.jsxs("div",{className:"bento-content",children:[o.jsxs("div",{className:"tech-pills",children:[o.jsxs("span",{className:"pill",children:[o.jsx(ks,{size:12})," Bash"]}),o.jsxs("span",{className:"pill",children:[o.jsx(Rs,{size:12})," React"]}),o.jsxs("span",{className:"pill",children:[o.jsx(B3,{size:12})," Biome.js"]})]}),o.jsx("div",{className:"impact-visual",children:o.jsxs("div",{className:"code-window",children:[o.jsxs("div",{className:"window-header",children:[o.jsx("span",{className:"dot red"}),o.jsx("span",{className:"dot yellow"}),o.jsx("span",{className:"dot green"})]}),o.jsxs("div",{className:"window-body",children:[o.jsx("div",{className:"code-line",children:"Websites that"}),o.jsx("div",{className:"code-line highlight",children:"Impact."}),o.jsxs("div",{className:"window-actions",children:[o.jsxs("button",{className:"win-btn primary",children:["Start ",o.jsx(y1,{size:12})]}),o.jsx("button",{className:"win-btn secondary",children:"Details"})]})]})]})})]})})]})}),o.jsx("style",{children:`
         .bento-section {
           padding-top: 2rem;
           padding-bottom: 4rem;
@@ -182,6 +182,10 @@ Error generating stack: `+a.message+`
           color: #ededed;
         }
 
+        .highlight-blue {
+          color: var(--accent-color);
+        }
+
         .glow-text {
           text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
@@ -216,18 +220,12 @@ Error generating stack: `+a.message+`
           flex-grow: 1;
           position: relative;
           margin: 1rem 0;
-          background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
           border-radius: 50%;
           min-height: 200px;
-        }
-
-        .globe-grid {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-          background-size: 20px 20px;
-          mask-image: radial-gradient(circle, black 40%, transparent 80%);
-          opacity: 0.5;
+          background-image: url('/globe-map.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
 
         .timezone-footer {
