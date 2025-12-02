@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import { resumeData } from '../data/resume';
-import { Mail, Linkedin, Github, Twitter, Clock, Globe, Video, Calendar as CalendarIcon, ChevronLeft, ChevronRight, Copy, Check } from 'lucide-react';
+import { Mail, Linkedin, Github, Twitter, Clock, Globe, Video, Calendar as CalendarIcon, ChevronLeft, ChevronRight, Copy, Check, Send } from 'lucide-react';
 
 const BookingContact = () => {
   const { email, booking, linkedin } = resumeData.personal;
   const [copied, setCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState('booking');
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const currentMonth = new Date().toLocaleString('default', { month: 'long' });
-  const currentYear = new Date().getFullYear();
-
-  // Generate calendar days
-  const days = Array.from({ length: 30 }, (_, i) => i + 1);
-  const timeSlots = ["12:30am", "1:00am", "1:30am", "2:00am", "2:30am", "3:00am", "3:30am", "4:00am"];
 
   return (
     <section id="contact" className="section booking-section">
@@ -41,8 +35,18 @@ const BookingContact = () => {
           </div>
 
           <div className="toggle-container">
-            <button className="toggle-btn active">Book a call</button>
-            <a href={`mailto:${email}`} className="toggle-btn">Fill a form</a>
+            <button
+              className={`toggle-btn ${activeTab === 'booking' ? 'active' : ''}`}
+              onClick={() => setActiveTab('booking')}
+            >
+              Book a call
+            </button>
+            <button
+              className={`toggle-btn ${activeTab === 'form' ? 'active' : ''}`}
+              onClick={() => setActiveTab('form')}
+            >
+              Fill a form
+            </button>
           </div>
         </div>
 
@@ -71,15 +75,46 @@ const BookingContact = () => {
             </div>
           </div>
 
-          {/* Cal.com Embed */}
-          <div className="cal-embed-container">
-            <iframe
-              src="https://cal.com/aagam-gopani?theme=dark&layout=month_view"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              title="Book a call"
-            ></iframe>
+          {/* Content Area */}
+          <div className="content-area">
+            {activeTab === 'booking' ? (
+              <div className="cal-embed-container">
+                <iframe
+                  src="https://cal.com/aagam-gopani?theme=dark&layout=month_view"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  title="Book a call"
+                ></iframe>
+              </div>
+            ) : (
+              <div className="contact-form-container">
+                <form className="contact-form" action={`mailto:${email}`} method="post" encType="text/plain">
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="name">Name</label>
+                      <input type="text" id="name" placeholder="Your name" required />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="email">Email</label>
+                      <input type="email" id="email" placeholder="your.email@example.com" required />
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <div className="label-row">
+                      <label htmlFor="message">Message</label>
+                      <span className="char-count">0/1000</span>
+                    </div>
+                    <textarea id="message" placeholder="What would you like to discuss?" rows="6" required></textarea>
+                  </div>
+
+                  <button type="submit" className="submit-btn">
+                    <Send size={18} /> Send message
+                  </button>
+                </form>
+              </div>
+            )}
           </div>
         </div>
 
@@ -261,10 +296,107 @@ const BookingContact = () => {
           font-size: 0.9rem;
         }
 
+        .content-area {
+          flex-grow: 1;
+          background: #000;
+          min-height: 600px;
+          display: flex;
+          flex-direction: column;
+        }
+
         .cal-embed-container {
           flex-grow: 1;
-          height: 600px; /* Fixed height for the embed */
-          background: #000;
+          height: 100%;
+          width: 100%;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-container {
+          padding: 3rem;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .contact-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .form-group label {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #fff;
+        }
+
+        .label-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .char-count {
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+          background: #1a1a1a;
+          border: 1px solid var(--border-color);
+          border-radius: 0.5rem;
+          padding: 0.75rem 1rem;
+          color: #fff;
+          font-family: inherit;
+          font-size: 0.95rem;
+          transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+          outline: none;
+          border-color: var(--accent-color);
+          background: #222;
+        }
+
+        .form-group textarea {
+          resize: vertical;
+          min-height: 150px;
+        }
+
+        .submit-btn {
+          margin-top: 1rem;
+          background: linear-gradient(to right, #3b82f6, #8b5cf6);
+          color: white;
+          border: none;
+          padding: 1rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: opacity 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+          opacity: 0.9;
         }
 
         @media (max-width: 1024px) {
@@ -275,8 +407,17 @@ const BookingContact = () => {
             border-right: none;
             border-bottom: 1px solid var(--border-color);
           }
-          .cal-embed-container {
-            height: 500px;
+          .content-area {
+            min-height: 500px;
+          }
+          .contact-form-container {
+            padding: 2rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .form-row {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
