@@ -14,6 +14,18 @@ Error generating stack: `+a.message+`
           position: relative;
           overflow: hidden;
           padding-top: 80px; /* Navbar height */
+          background-image: url('/hero-bg.png');
+          background-size: cover;
+          background-position: center bottom;
+          background-repeat: no-repeat;
+        }
+
+        .hero-section::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+          z-index: 1;
         }
 
         .hero-container {
@@ -21,6 +33,8 @@ Error generating stack: `+a.message+`
           align-items: center;
           justify-content: space-between;
           width: 100%;
+          position: relative;
+          z-index: 2;
         }
 
         .hero-content {
