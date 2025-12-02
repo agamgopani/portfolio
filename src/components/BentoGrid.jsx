@@ -1,79 +1,114 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { resumeData } from '../data/resume';
-import { Users, Globe, Cpu, Mail, ArrowRight } from 'lucide-react';
+import { Globe, Mail, ArrowRight, Copy, Check, Terminal, LayoutTemplate, Code, ArrowUpRight, MapPin } from 'lucide-react';
 
 const BentoGrid = () => {
-    return (
-        <section id="about" className="section bento-section">
-            <div className="container">
-                <div className="bento-grid">
+  const [copied, setCopied] = useState(false);
 
-                    {/* Collaboration Block */}
-                    <div className="bento-item collaboration-block">
-                        <div className="bento-content">
-                            <div className="icon-box">
-                                <Users size={24} color="#3b82f6" />
-                            </div>
-                            <h3 className="bento-title">Collaboration</h3>
-                            <p className="bento-text">
-                                I prioritize client collaboration, fostering open communication to build truly impactful solutions.
-                            </p>
-                        </div>
-                        <div className="bento-visual collaboration-visual">
-                            {/* Abstract visual representation of connection */}
-                            <div className="connection-node node-1"></div>
-                            <div className="connection-node node-2"></div>
-                            <div className="connection-node node-3"></div>
-                            <div className="connection-line line-1"></div>
-                            <div className="connection-line line-2"></div>
-                        </div>
-                    </div>
+  const copyEmail = () => {
+    navigator.clipboard.writeText(resumeData.personal.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
-                    {/* Tech Stack Block */}
-                    <div className="bento-item tech-block">
-                        <div className="bento-content">
-                            <h3 className="bento-title">Passionate about cutting-edge technologies</h3>
-                            <div className="tech-tags">
-                                <span className="tech-tag"><Cpu size={14} /> React</span>
-                                <span className="tech-tag">Next.js</span>
-                                <span className="tech-tag">TypeScript</span>
-                                <span className="tech-tag">Node.js</span>
-                                <span className="tech-tag">Python</span>
-                                <span className="tech-tag">AWS</span>
-                                <span className="tech-tag">Docker</span>
-                                <span className="tech-tag">PostgreSQL</span>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <section id="about" className="section bento-section">
+      <div className="container">
+        <div className="bento-grid">
 
-                    {/* Time Zones Block */}
-                    <div className="bento-item timezone-block">
-                        <div className="bento-content">
-                            <h3 className="bento-title">Flexible with time zone communications</h3>
-                            <div className="timezone-map">
-                                <div className="map-bg"></div>
-                                <div className="timezone-badge ca">🇨🇦 Toronto</div>
-                                <div className="timezone-badge us">🇺🇸 USA</div>
-                                <div className="timezone-badge in">🇮🇳 India</div>
-                            </div>
-                        </div>
-                    </div>
+          {/* Time Zones Block (Left Tall) */}
+          <div className="bento-item timezone-block">
+            <div className="bento-content">
+              <h3 className="bento-title">I'm very flexible with time zone communications</h3>
 
-                    {/* CTA Block */}
-                    <div className="bento-item cta-block">
-                        <div className="bento-content">
-                            <h3 className="bento-title">Let's work together on your next project</h3>
-                            <a href={`mailto:${resumeData.personal.email}`} className="bento-cta-btn">
-                                <Mail size={18} />
-                                {resumeData.personal.email}
-                            </a>
-                        </div>
-                    </div>
+              <div className="timezone-flags">
+                <div className="flag-item"><span className="flag">🇬🇧</span> UK</div>
+                <div className="flag-item"><span className="flag">🇮🇳</span> India</div>
+                <div className="flag-item"><span className="flag">🇺🇸</span> USA</div>
+              </div>
 
+              <div className="globe-visual">
+                <div className="globe-sphere"></div>
+                <div className="globe-grid"></div>
+              </div>
+
+              <div className="timezone-footer">
+                <div className="location-indicator">
+                  <MapPin size={14} />
+                  <div>
+                    <span className="loc-label">REMOTE</span>
+                    <span className="loc-value">India</span>
+                  </div>
                 </div>
+                <a href="#contact" className="connect-link">
+                  Connect now <ArrowRight size={14} />
+                </a>
+              </div>
             </div>
+          </div>
 
-            <style>{`
+          {/* Collaboration Block (Center Top) */}
+          <div className="bento-item collaboration-block">
+            <div className="bento-content centered">
+              <h3 className="bento-title glow-text">Let's work together on your next project</h3>
+
+              <div className="email-copy-btn" onClick={copyEmail}>
+                <Copy size={16} />
+                <span>{resumeData.personal.email}</span>
+                {copied && <span className="copied-tooltip">Copied!</span>}
+              </div>
+            </div>
+          </div>
+
+          {/* SaaS Block (Center Bottom) */}
+          <div className="bento-item saas-block">
+            <div className="bento-content">
+              <div className="saas-icon">
+                <LayoutTemplate size={24} />
+              </div>
+              <span className="saas-subtitle">THE INSIDE SCOOP</span>
+              <h3 className="bento-title">Currently building a Saas Application</h3>
+
+              <div className="saas-visual">
+                <div className="saas-card-preview"></div>
+                <div className="saas-card-preview"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Impact/Tech Block (Right Tall) */}
+          <div className="bento-item impact-block">
+            <div className="bento-content">
+              <div className="tech-pills">
+                <span className="pill"><Terminal size={12} /> Bash</span>
+                <span className="pill"><Code size={12} /> React</span>
+                <span className="pill"><Globe size={12} /> Biome.js</span>
+              </div>
+
+              <div className="impact-visual">
+                <div className="code-window">
+                  <div className="window-header">
+                    <span className="dot red"></span>
+                    <span className="dot yellow"></span>
+                    <span className="dot green"></span>
+                  </div>
+                  <div className="window-body">
+                    <div className="code-line">Websites that</div>
+                    <div className="code-line highlight">Impact.</div>
+                    <div className="window-actions">
+                      <button className="win-btn primary">Start <ArrowRight size={12} /></button>
+                      <button className="win-btn secondary">Details</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <style>{`
         .bento-section {
           padding-top: 2rem;
           padding-bottom: 4rem;
@@ -81,14 +116,16 @@ const BentoGrid = () => {
 
         .bento-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(2, minmax(280px, auto));
+          grid-template-columns: 1fr 1.2fr 1fr;
+          grid-template-rows: 280px 280px;
           gap: 1.5rem;
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
         .bento-item {
-          background: var(--surface-color);
-          border: 1px solid var(--border-color);
+          background: #0a0a0a;
+          border: 1px solid #222;
           border-radius: 1.5rem;
           padding: 2rem;
           position: relative;
@@ -100,8 +137,7 @@ const BentoGrid = () => {
 
         .bento-item:hover {
           border-color: var(--accent-color);
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 30px -10px rgba(59, 130, 246, 0.15);
         }
 
         .bento-content {
@@ -112,183 +148,305 @@ const BentoGrid = () => {
           flex-direction: column;
         }
 
+        .bento-content.centered {
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+
         .bento-title {
           font-size: 1.5rem;
           margin-bottom: 1rem;
           line-height: 1.3;
-          background: linear-gradient(to bottom right, #fff, #a1a1aa);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: #ededed;
         }
 
-        .bento-text {
-          color: var(--text-secondary);
-          font-size: 1rem;
-          line-height: 1.6;
+        .glow-text {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .icon-box {
-          width: 48px;
-          height: 48px;
-          background: rgba(59, 130, 246, 0.1);
-          border-radius: 12px;
+        /* Timezone Block */
+        .timezone-block {
+          grid-column: 1;
+          grid-row: span 2;
+          background: linear-gradient(to bottom, #0a0a0a, #050505);
+        }
+
+        .timezone-flags {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 1.5rem;
-        }
-
-        /* Collaboration Block */
-        .collaboration-block {
-          grid-column: span 2;
-        }
-
-        .collaboration-visual {
-          position: absolute;
-          right: 2rem;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 200px;
-          height: 100px;
-          opacity: 0.5;
-        }
-
-        .connection-node {
-          width: 12px;
-          height: 12px;
-          background: var(--accent-color);
-          border-radius: 50%;
-          position: absolute;
-          box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .node-1 { top: 10px; left: 10px; }
-        .node-2 { bottom: 10px; right: 50px; }
-        .node-3 { top: 40px; right: 10px; }
-
-        .connection-line {
-          position: absolute;
-          background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-          height: 1px;
-          opacity: 0.3;
-        }
-
-        .line-1 { width: 100%; top: 20px; transform: rotate(15deg); }
-        .line-2 { width: 80%; bottom: 30px; right: 0; transform: rotate(-10deg); }
-
-        /* Tech Stack Block */
-        .tech-block {
-          grid-column: span 1;
-          background: linear-gradient(to bottom right, var(--surface-color), rgba(59, 130, 246, 0.05));
-        }
-
-        .tech-tags {
-          display: flex;
+          gap: 0.75rem;
+          margin-bottom: 2rem;
           flex-wrap: wrap;
-          gap: 0.5rem;
-          margin-top: auto;
         }
 
-        .tech-tag {
-          background: rgba(255, 255, 255, 0.03);
+        .flag-item {
+          background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 0.4rem 0.8rem;
-          border-radius: 6px;
-          font-size: 0.8rem;
-          color: var(--text-secondary);
+          padding: 0.25rem 0.75rem;
+          border-radius: 1rem;
+          font-size: 0.75rem;
+          color: #aaa;
           display: flex;
           align-items: center;
           gap: 0.4rem;
         }
 
-        /* Time Zone Block */
-        .timezone-block {
-          grid-column: span 1;
-          min-height: 300px;
-        }
-
-        .timezone-map {
-          margin-top: auto;
-          height: 150px;
+        .globe-visual {
+          flex-grow: 1;
           position: relative;
-          background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-          border-radius: 1rem;
-          overflow: hidden;
+          margin: 1rem 0;
+          background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
+          border-radius: 50%;
+          min-height: 200px;
         }
 
-        .timezone-badge {
+        .globe-grid {
           position: absolute;
-          background: rgba(0, 0, 0, 0.8);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 0.25rem 0.75rem;
-          border-radius: 1rem;
-          font-size: 0.75rem;
+          inset: 0;
+          background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+          background-size: 20px 20px;
+          mask-image: radial-gradient(circle, black 40%, transparent 80%);
+          opacity: 0.5;
+        }
+
+        .timezone-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin-top: auto;
+        }
+
+        .location-indicator {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
           color: #fff;
+        }
+
+        .loc-label {
+          display: block;
+          font-size: 0.65rem;
+          color: #666;
+          letter-spacing: 0.1em;
+        }
+
+        .loc-value {
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+
+        .connect-link {
+          color: #fff;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+          opacity: 0.7;
+          transition: opacity 0.2s;
+        }
+
+        .connect-link:hover {
+          opacity: 1;
+        }
+
+        /* Collaboration Block */
+        .collaboration-block {
+          grid-column: 2;
+          grid-row: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .email-copy-btn {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.75rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          color: #aaa;
+          cursor: pointer;
+          transition: all 0.2s;
+          position: relative;
+        }
+
+        .email-copy-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+        }
+
+        .copied-tooltip {
+          position: absolute;
+          top: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #22c55e;
+          color: #000;
+          font-size: 0.75rem;
+          padding: 0.25rem 0.5rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+        }
+
+        /* SaaS Block */
+        .saas-block {
+          grid-column: 2;
+          grid-row: 2;
+          background: linear-gradient(to bottom, #0a0a0a, #111);
+        }
+
+        .saas-icon {
+          margin-bottom: 1rem;
+          color: #666;
+        }
+
+        .saas-subtitle {
+          font-size: 0.7rem;
+          letter-spacing: 0.15em;
+          color: #666;
+          margin-bottom: 0.5rem;
+          display: block;
+        }
+
+        .saas-visual {
+          display: flex;
+          gap: 1rem;
+          margin-top: auto;
+          opacity: 0.5;
+        }
+
+        .saas-card-preview {
+          width: 60px;
+          height: 80px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 0.5rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Impact Block */
+        .impact-block {
+          grid-column: 3;
+          grid-row: span 2;
+          background: radial-gradient(circle at top right, #111, #0a0a0a);
+        }
+
+        .tech-pills {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 2rem;
+          flex-wrap: wrap;
+        }
+
+        .pill {
+          background: #151515;
+          border: 1px solid #333;
+          padding: 0.3rem 0.7rem;
+          border-radius: 2rem;
+          font-size: 0.75rem;
+          color: #aaa;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+
+        .impact-visual {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .code-window {
+          background: #000;
+          border: 1px solid #333;
+          border-radius: 0.75rem;
+          width: 100%;
+          padding: 1rem;
+          box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+
+        .window-header {
+          display: flex;
+          gap: 0.4rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .red { background: #ef4444; }
+        .yellow { background: #eab308; }
+        .green { background: #22c55e; }
+
+        .window-body {
+          text-align: center;
+        }
+
+        .code-line {
+          font-size: 1.25rem;
+          color: #fff;
+          font-weight: 500;
+          margin-bottom: 0.25rem;
+        }
+
+        .highlight {
+          color: var(--accent-color);
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+        }
+
+        .window-actions {
+          display: flex;
+          gap: 0.75rem;
+          justify-content: center;
+        }
+
+        .win-btn {
+          padding: 0.4rem 0.8rem;
+          border-radius: 0.5rem;
+          font-size: 0.75rem;
+          cursor: pointer;
+          border: none;
           display: flex;
           align-items: center;
           gap: 0.25rem;
         }
 
-        .ca { top: 20%; left: 20%; }
-        .us { top: 40%; left: 30%; }
-        .in { bottom: 30%; right: 20%; }
-
-        /* CTA Block */
-        .cta-block {
-          grid-column: span 2;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          background: linear-gradient(to right, var(--surface-color), rgba(59, 130, 246, 0.05));
-        }
-
-        .cta-block .bento-content {
-          align-items: center;
-          justify-content: center;
-        }
-
-        .bento-cta-btn {
-          margin-top: 1.5rem;
-          background: var(--text-primary);
-          color: var(--bg-color);
-          padding: 0.75rem 1.5rem;
-          border-radius: 2rem;
+        .primary {
+          background: #fff;
+          color: #000;
           font-weight: 600;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          transition: transform 0.2s;
         }
 
-        .bento-cta-btn:hover {
-          transform: scale(1.05);
+        .secondary {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
         }
 
         @media (max-width: 1024px) {
           .bento-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
           }
-          .collaboration-block { grid-column: span 2; }
-          .tech-block { grid-column: span 1; }
-          .timezone-block { grid-column: span 1; }
-          .cta-block { grid-column: span 2; }
+          .timezone-block { grid-column: 1; grid-row: span 1; }
+          .collaboration-block { grid-column: 2; grid-row: 1; }
+          .saas-block { grid-column: 1; grid-row: 2; }
+          .impact-block { grid-column: 2; grid-row: 2; }
         }
 
         @media (max-width: 768px) {
           .bento-grid {
             grid-template-columns: 1fr;
           }
-          .collaboration-block, .tech-block, .timezone-block, .cta-block {
-            grid-column: span 1;
-          }
-          .collaboration-visual {
-            display: none;
+          .timezone-block, .collaboration-block, .saas-block, .impact-block {
+            grid-column: 1;
+            grid-row: auto;
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default BentoGrid;
