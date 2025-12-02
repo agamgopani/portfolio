@@ -668,4 +668,3 @@ const BookingContact = () => {
 };
 
 export default BookingContact;
-```
