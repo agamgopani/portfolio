@@ -67,7 +67,8 @@ export const resumeData = {
         {
             title: "Real-time Trash Detection",
             tech: "YOLOv11n, Python, Computer Vision",
-            description: "Engineered real-time detection system for autonomous robots achieving 82% mAP. Optimized for embedded deployment on IoT devices supporting 300+ sites."
+            description: "Engineered real-time detection system for autonomous robots achieving 82% mAP. Optimized for embedded deployment on IoT devices supporting 300+ sites.",
+            link: "https://www.youtube.com/watch?v=wA671yO8v8U"
         }
     ],
     education: [

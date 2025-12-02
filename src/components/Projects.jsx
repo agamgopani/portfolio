@@ -3,39 +3,45 @@ import { resumeData } from '../data/resume';
 import { ArrowUpRight, Github } from 'lucide-react';
 
 const Projects = () => {
-    return (
-        <section id="projects" className="section">
-            <div className="container">
-                <h2 className="section-title">Selected Projects</h2>
+  return (
+    <section id="projects" className="section">
+      <div className="container">
+        <h2 className="section-title">Selected Projects</h2>
 
-                <div className="projects-grid">
-                    {resumeData.projects.map((project, index) => (
-                        <div key={index} className="project-card">
-                            <div className="project-content">
-                                <h3 className="project-title">{project.title}</h3>
-                                <p className="project-tech">{project.tech}</p>
-                                <p className="project-desc">{project.description}</p>
+        <div className="projects-grid">
+          {resumeData.projects.map((project, index) => (
+            <div key={index} className="project-card">
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-tech">{project.tech}</p>
+                <p className="project-desc">{project.description}</p>
 
-                                {project.details && (
-                                    <ul className="project-details">
-                                        {project.details.slice(0, 2).map((detail, i) => (
-                                            <li key={i}>{detail}</li>
-                                        ))}
-                                    </ul>
-                                )}
-
-                                <div className="project-links">
-                                    <a href="#" className="link-arrow">
-                                        View Project <ArrowUpRight size={16} />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                {project.details && (
+                  <ul className="project-details">
+                    {project.details.slice(0, 2).map((detail, i) => (
+                      <li key={i}>{detail}</li>
                     ))}
-                </div>
-            </div>
+                  </ul>
+                )}
 
-            <style>{`
+                <div className="project-links">
+                  {project.link ? (
+                    <a href={project.link} className="link-arrow" target="_blank" rel="noopener noreferrer">
+                      {project.link.includes('youtube') ? 'Watch Demo' : 'View Project'} <ArrowUpRight size={16} />
+                    </a>
+                  ) : (
+                    <span className="link-arrow disabled" style={{ opacity: 0.5, cursor: 'not-allowed' }}>
+                      View Project <ArrowUpRight size={16} />
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
         .projects-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -107,8 +113,8 @@ const Projects = () => {
           gap: 0.75rem;
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Projects;
