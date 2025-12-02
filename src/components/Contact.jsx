@@ -3,42 +3,42 @@ import { resumeData } from '../data/resume';
 import { Mail, Phone, Linkedin } from 'lucide-react';
 
 const Contact = () => {
-    const { email, phone } = resumeData.personal;
+  const { email, phone } = resumeData.personal;
 
-    return (
-        <section id="contact" className="section contact-section">
-            <div className="container contact-container">
-                <h2 className="contact-title">Let's work together</h2>
-                <p className="contact-text">
-                    I'm currently available for new opportunities.
-                    Whether you have a question or just want to say hi, I'll try my best to get back to you!
-                </p>
+  return (
+    <section id="contact" className="section contact-section">
+      <div className="container contact-container">
+        <h2 className="contact-title">Let's work together</h2>
+        <p className="contact-text">
+          I'm currently available for new opportunities.
+          Whether you have a question or just want to say hi, I'll try my best to get back to you!
+        </p>
 
-                <a href={`mailto:${email}`} className="btn btn-primary email-btn">
-                    <Mail size={20} style={{ marginRight: '0.5rem' }} /> Say Hello
-                </a>
+        <a href={`mailto:${email}`} className="btn btn-primary email-btn">
+          <Mail size={20} style={{ marginRight: '0.5rem' }} /> Say Hello
+        </a>
 
-                <div className="contact-links">
-                    <a href={`mailto:${email}`} className="contact-link">
-                        {email}
-                    </a>
-                    <span className="separator">•</span>
-                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="contact-link">
-                        {phone}
-                    </a>
-                    <span className="separator">•</span>
-                    <a href="#" className="contact-link">
-                        LinkedIn
-                    </a>
-                </div>
+        <div className="contact-links">
+          <a href={`mailto:${email}`} className="contact-link">
+            {email}
+          </a>
+          <span className="separator">•</span>
+          <a href={`tel:${phone.replace(/\s/g, '')}`} className="contact-link">
+            {phone}
+          </a>
+          <span className="separator">•</span>
+          <a href={resumeData.personal.linkedin} className="contact-link" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </div>
 
-                <footer className="footer">
-                    <p>&copy; 2025 Aagam Gopani. All rights reserved.</p>
-                    <p className="footer-location">Toronto, ON</p>
-                </footer>
-            </div>
+        <footer className="footer">
+          <p>&copy; 2025 Aagam Gopani. All rights reserved.</p>
+          <p className="footer-location">Toronto, ON</p>
+        </footer>
+      </div>
 
-            <style>{`
+      <style>{`
         .contact-section {
           min-height: 60vh;
           display: flex;
@@ -118,8 +118,8 @@ const Contact = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Contact;
