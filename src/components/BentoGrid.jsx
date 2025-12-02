@@ -60,22 +60,6 @@ const BentoGrid = () => {
             </div>
           </div>
 
-          {/* SaaS Block (Center Bottom) */}
-          <div className="bento-item saas-block">
-            <div className="bento-content">
-              <div className="saas-icon">
-                <LayoutTemplate size={24} />
-              </div>
-              <span className="saas-subtitle">THE INSIDE SCOOP</span>
-              <h3 className="bento-title">Currently building a Saas Application</h3>
-
-              <div className="saas-visual">
-                <div className="saas-card-preview"></div>
-                <div className="saas-card-preview"></div>
-              </div>
-            </div>
-          </div>
-
           {/* Impact/Tech Block (Right Tall) */}
           <div className="bento-item impact-block">
             <div className="bento-content">
@@ -116,7 +100,7 @@ const BentoGrid = () => {
 
         .bento-grid {
           display: grid;
-          grid-template-columns: 1fr 1.2fr 1fr;
+          grid-template-columns: 1fr 1fr;
           grid-template-rows: 280px 280px;
           gap: 1.5rem;
           max-width: 1200px;
@@ -174,6 +158,22 @@ const BentoGrid = () => {
           grid-column: 1;
           grid-row: span 2;
           background: linear-gradient(to bottom, #0a0a0a, #050505);
+        }
+
+        /* Collaboration Block */
+        .collaboration-block {
+          grid-column: 2;
+          grid-row: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Impact Block */
+        .impact-block {
+          grid-column: 2;
+          grid-row: 2;
+          background: radial-gradient(circle at top right, #111, #0a0a0a);
         }
 
         .timezone-flags {
@@ -289,49 +289,7 @@ const BentoGrid = () => {
           font-weight: 600;
         }
 
-        /* SaaS Block */
-        .saas-block {
-          grid-column: 2;
-          grid-row: 2;
-          background: linear-gradient(to bottom, #0a0a0a, #111);
-        }
-
-        .saas-icon {
-          margin-bottom: 1rem;
-          color: #666;
-        }
-
-        .saas-subtitle {
-          font-size: 0.7rem;
-          letter-spacing: 0.15em;
-          color: #666;
-          margin-bottom: 0.5rem;
-          display: block;
-        }
-
-        .saas-visual {
-          display: flex;
-          gap: 1rem;
-          margin-top: auto;
-          opacity: 0.5;
-        }
-
-        .saas-card-preview {
-          width: 60px;
-          height: 80px;
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 0.5rem;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Impact Block */
-        .impact-block {
-          grid-column: 3;
-          grid-row: span 2;
-          background: radial-gradient(circle at top right, #111, #0a0a0a);
-        }
-
-        .tech-pills {
+        /* Tech Pills */
           display: flex;
           gap: 0.5rem;
           margin-bottom: 2rem;
@@ -424,20 +382,28 @@ const BentoGrid = () => {
 
         @media (max-width: 1024px) {
           .bento-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             grid-template-rows: auto;
           }
-          .timezone-block { grid-column: 1; grid-row: span 1; }
-          .collaboration-block { grid-column: 2; grid-row: 1; }
-          .saas-block { grid-column: 1; grid-row: 2; }
-          .impact-block { grid-column: 2; grid-row: 2; }
+          .timezone-block { 
+            grid-column: 1; 
+            grid-row: auto; 
+          }
+          .collaboration-block { 
+            grid-column: 1; 
+            grid-row: auto; 
+          }
+          .impact-block { 
+            grid-column: 1; 
+            grid-row: auto; 
+          }
         }
 
         @media (max-width: 768px) {
           .bento-grid {
             grid-template-columns: 1fr;
           }
-          .timezone-block, .collaboration-block, .saas-block, .impact-block {
+          .timezone-block, .collaboration-block, .impact-block {
             grid-column: 1;
             grid-row: auto;
           }
